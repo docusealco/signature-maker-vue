@@ -4,6 +4,11 @@ import '@docuseal/signature-maker-js'
 const SignatureMaker = defineComponent({
   name: 'SignatureMaker',
   props: {
+    modelValue: {
+      type: String,
+      required: false,
+      default: null,
+    },
     downloadOnSave: {
       type: Boolean,
       required: false,
@@ -211,7 +216,7 @@ const SignatureMaker = defineComponent({
     },
 
   },
-  emits: ['save', 'change'],
+  emits: ['save', 'change', 'update:model-value'],
   mounted() {
     this.$el.addEventListener('save', (e: CustomEvent) => {
       this.$emit('save', e.detail);
@@ -219,6 +224,7 @@ const SignatureMaker = defineComponent({
 
     this.$el.addEventListener('change', (e: CustomEvent) => {
       this.$emit('change', e.detail);
+      this.$emit('update:model-value', e.detail.base64)
     });
   },
   render() {

@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# Signature Maker (Vue)
+# Signature Maker Vue
 
 Signature Maker is a Vue component that lets users draw or type their signature.
 
@@ -77,10 +77,7 @@ export default {
     handleSave(event) {
       fetch('/save-signature', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]')?.content,
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ file: event.base64 }),
       });
     },
@@ -99,8 +96,8 @@ Usage without a save signature button, embedded in another form. The signature w
     <form @submit.prevent="handleSubmit">
       <input v-model="name" name="name" type="text" />
       <SignatureMaker
+        v-model="signatureBase64"
         :with-submit="false"
-        @change="handleSignatureChange"
       />
       <button type="submit">Submit</button>
     </form>
@@ -122,16 +119,10 @@ export default {
     };
   },
   methods: {
-    handleSignatureChange(event) {
-      this.signatureBase64 = event.base64;
-    },
     handleSubmit() {
       fetch('/submit-form', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]')?.content,
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: this.name,
           signature: this.signatureBase64,
@@ -170,10 +161,7 @@ export default {
       if (event.base64) {
         fetch('/background-save-signature', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]')?.content,
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ file: event.base64 }),
         });
       } else {
