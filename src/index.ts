@@ -214,7 +214,11 @@ const SignatureMaker = defineComponent({
       required: false,
       default: '',
     },
-
+    fontUrl: {
+      type: String,
+      required: false,
+      default: '',
+    },
   },
   emits: ['save', 'change', 'update:model-value'],
   mounted() {
@@ -270,6 +274,7 @@ const SignatureMaker = defineComponent({
       'data-upload-type-button-style': this.uploadTypeButtonStyle,
       'data-upload-type-button-active-class': this.uploadTypeButtonActiveClass,
       'data-upload-type-button-active-style': this.uploadTypeButtonActiveStyle,
+      'data-font-url': this.fontUrl,
     });
   },
 });
