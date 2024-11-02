@@ -1,11 +1,11 @@
 {
   "name": "@docuseal/signature-maker-vue",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Vue component for drawing signatures",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
-  "author": "Alex Turchyn <alex@docuseal.co>",
+  "author": "Alex Turchyn <alex@docuseal.com>",
   "license": "MIT",
   "repository": "https://github.com/docusealco/signature-maker-vue",
   "homepage": "https://github.com/docusealco/signature-maker-vue#readme",
